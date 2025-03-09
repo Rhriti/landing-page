@@ -152,48 +152,50 @@
             }
         }
         window.onload = fetchGitHubStats;
-    
         function initializeVantaEffect() {
         if (window.innerWidth <= 768) { // Mobile view (adjust breakpoint as needed)
             VANTA.NET({
-        el: "#birds-section",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: true,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x515151,
-        backgroundColor: 0xffffff,
-        points: 5.00,
-        maxDistance: 30.00,
-        spacing: 40.00
-        });
+                el: "#birds-section",
+                mouseControls: false, // Disable mouse controls for mobile
+                touchControls: true,
+                gyroControls: true,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.50, // Increase scale for mobile
+                color: 0xff0000, // Different color for mobile
+                backgroundColor: 0x000000, // Different background for mobile
+                points: 5.00, // Fewer points for mobile
+                maxDistance: 15.00,
+                spacing: 12.00
+            });
         } else { // Desktop view
             VANTA.NET({
-        el: "#birds-section",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: true,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x515151,
-        backgroundColor: 0xffffff,
-        points: 7.00,
-        maxDistance: 20.00,
-        spacing: 15.00
-        });
+                el: "#birds-section",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false, // Disable gyro on desktop
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x515151,
+                backgroundColor: 0xffffff,
+                points: 7.00,
+                maxDistance: 20.00,
+                spacing: 15.00
+            });
         }
     }
 
-    window.addEventListener("DOMContentLoaded", initializeVantaEffect);
-    window.addEventListener("resize", function() {
-        initializeVantaEffect();
-    });
+    // Run the function when the page loads
+        window.addEventListener("DOMContentLoaded", initializeVantaEffect);
+    
+    // Optional: Reinitialize on window resize (use debounce to optimize performance)
+        window.addEventListener("resize", function() {
+            initializeVantaEffect();});
 
+        // Waitlist form submission
         document.getElementById('waitlist-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = e.target.querySelector('input').value;

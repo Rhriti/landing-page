@@ -189,11 +189,15 @@
         }
     }
 
+    // Run the function when the page loads
     window.addEventListener("DOMContentLoaded", initializeVantaEffect);
     window.addEventListener("resize", function() {
         initializeVantaEffect();
     });
 
+
+
+        // Waitlist form submission
         document.getElementById('waitlist-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = e.target.querySelector('input').value;

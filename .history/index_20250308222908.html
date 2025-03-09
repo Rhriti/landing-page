@@ -153,47 +153,11 @@
         }
         window.onload = fetchGitHubStats;
     
-        function initializeVantaEffect() {
-        if (window.innerWidth <= 768) { // Mobile view (adjust breakpoint as needed)
-            VANTA.NET({
-        el: "#birds-section",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: true,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x515151,
-        backgroundColor: 0xffffff,
-        points: 5.00,
-        maxDistance: 30.00,
-        spacing: 40.00
-        });
-        } else { // Desktop view
-            VANTA.NET({
-        el: "#birds-section",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: true,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x515151,
-        backgroundColor: 0xffffff,
-        points: 7.00,
-        maxDistance: 20.00,
-        spacing: 15.00
-        });
-        }
-    }
+        VANTA.NET({
+     
 
-    window.addEventListener("DOMContentLoaded", initializeVantaEffect);
-    window.addEventListener("resize", function() {
-        initializeVantaEffect();
-    });
 
+        // Waitlist form submission
         document.getElementById('waitlist-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = e.target.querySelector('input').value;

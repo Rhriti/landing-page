@@ -170,6 +170,7 @@
         maxDistance: 30.00,
         spacing: 40.00
         });
+            });
         } else { // Desktop view
             VANTA.NET({
         el: "#birds-section",
@@ -189,11 +190,17 @@
         }
     }
 
+    // Run the function when the page loads
     window.addEventListener("DOMContentLoaded", initializeVantaEffect);
+    
+    // Optional: Reinitialize on window resize (use debounce to optimize performance)
     window.addEventListener("resize", function() {
         initializeVantaEffect();
     });
 
+
+
+        // Waitlist form submission
         document.getElementById('waitlist-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = e.target.querySelector('input').value;
