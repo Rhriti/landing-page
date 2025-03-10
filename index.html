@@ -10,15 +10,6 @@
     <link href="prism.css" rel="stylesheet"/>
     <script src="prism.js"></script>
     <style>
-         #flash-message {
-            display: none;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 18px;
-            transition: opacity 0.5s ease-in-out;}
 
         #birds-section {
             position: relative;
@@ -79,7 +70,6 @@
 
         .prompts-container.open {
             opacity: 1;
-            max-height: 1000px;
             transform: translateY(0);
         }
 
@@ -185,7 +175,7 @@
     <!-- Add padding to the element below the header to prevent content from hiding under the fixed header -->
     <div class="pt-8"></div>
     
-    <main class="container mx-auto px-1 text-center">
+    <main class="container mx-auto px-5 text-center">
         <div style="min-height: 60px;"></div>
         <button 
         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-200 text-gray-700 mb-4 font-mono hover:bg-gray-300 transition-colors shadow-sm"
@@ -202,15 +192,15 @@
  
 
       
-        <div class="max-w-4xl mx-auto">
+        <div class="mx-10">
     
             <h1 class="hidden md:block font-mono text-4xl md:text-5xl font-bold lg:text-6xl max-w-4xl mx-auto tracking-tight">
                 <span class="block mb-3" style="opacity: 0.8;">judge Devpost submissions</span>
-                <span class="block text-gray-600" style="opacity: 0.6;">through <span class11="text-green-600">AI</span>'s lens</span>
+                <span class="block text-gray-600" style="opacity: 0.6;">through <span class="text-green-600">AI</span>'s lens</span>
               </h1>
           
             <div class="block md:hidden font-mono text-4xl font-bold max-w-4xl mx-auto tracking-tight">
-                <div class="text-gray-600" style="opacity: 0.8; letter-spacing: 0.2em;">Judge Devpost</div>
+                <div class="text-gray-600" style="opacity: 0.8; ">Judge Devpost</div>
                 <div class="text-gray-600" style="opacity: 0.8;">submissions</div> <!-- Added letter-spacing here -->
                 <div class="text-gray-600 " style="opacity: 0.8;">through <span class="text-green-600">AI</span>'s lens</div>
             </div>
@@ -218,8 +208,8 @@
               
             <div class="pt-1.5"></div>
             
-            <div class="max-w-4xl mx-1 ">
-                <div class="flex items-center justify-center cursor-pointer" onclick="togglePrompts()">
+            <div class="mx-1 " >
+                <div class="flex justify-center cursor-pointer" onclick="togglePrompts()">
                     <span class="star-pulse text-yellow-500 mr-2">★</span>
                     <p class="text-gray-500 text-sm md:text-base font-medium raised-text font-mono">
                         We don’t shy away from showing our prompts. Judging should be 100% transparent </p>   
@@ -247,9 +237,9 @@
                         </div>
                 
                         <!-- Code Editor -->
-                        <div class="p-4 overflow-auto">
+                        <div class="p-4 overflow-auto text-left">
                             <pre class="text-sm text-gray-300 font-mono">
-                        <code class="language-css">
+                        <code >
 const message= [
 {
     "role": "system",
@@ -322,7 +312,7 @@ const message= [
         "description": "${des2 || "no description"}"
     }`
 }];
-</code>
+                        </code>
                             </pre>
                         </div>
                     </div>
@@ -362,7 +352,7 @@ const message= [
                 </span>
             </p>
             <p id="my-form-status"></p>
-            <form class="mx-auto flex max-w-md gap-x-4 pt-6" action="https://formspree.io/f/xwplkvgp"
+            <form class="mx-auto flex max-w-md gap-x-4 pt-6 " action="https://formspree.io/f/xwplkvgp"
             method="POST" id="my-form">
                 <input type="email" 
                         name="email"
