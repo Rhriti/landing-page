@@ -60,17 +60,18 @@
 
         /* Smooth transition for expand/collapse */
         .prompts-container {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.4s ease-in-out;
-    }
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
 
-    .prompts-container.open {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.prompts-container.open {
+    max-height: 500px; /* adjust this value as needed */
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
         #dropdown-icon{
@@ -403,48 +404,35 @@ const message= [
         function togglePrompts() {
     const prompts = document.getElementById('prompts');
     const icon = document.getElementById('dropdown-icon');
-    const isOpen = prompts.classList.contains('open');
-
-    // Remove existing transitionend listeners to prevent duplicates
-    prompts.removeEventListener('transitionend', handleTransitionEnd);
-
-    if (isOpen) {
-        // Start closing animation
-        prompts.style.maxHeight = `${prompts.scrollHeight}px`;
-        void prompts.offsetHeight; // Trigger reflow
+    
+    if (prompts.classList.contains('open')) {
+        // Closing animation
+        prompts.style.maxHeight = prompts.scrollHeight + 'px';
+        // Force reflow to trigger animation
+        void prompts.offsetHeight; 
         prompts.style.maxHeight = '0';
         prompts.style.opacity = '0';
         prompts.style.transform = 'translateY(-10px)';
     } else {
-        // Start opening animation
+        // Opening animation
         prompts.style.maxHeight = '0';
         prompts.style.opacity = '0';
         prompts.style.transform = 'translateY(-10px)';
-        void prompts.offsetHeight; // Trigger reflow
-        prompts.style.maxHeight = `${prompts.scrollHeight}px`;
+        // Force reflow to trigger animation
+        void prompts.offsetHeight;
+        prompts.style.maxHeight = prompts.scrollHeight + 'px';
         prompts.style.opacity = '1';
         prompts.style.transform = 'translateY(0)';
     }
-
-    // Add transitionend listener for when animation completes
-    prompts.addEventListener('transitionend', handleTransitionEnd);
-
-    function handleTransitionEnd(e) {
-        // Ensure we only handle the max-height transition completion
-        if (e.propertyName !== 'max-height') return;
-
-        // Toggle classes and clean up
+    
+    // Toggle classes after animation
+    setTimeout(() => {
         prompts.classList.toggle('open');
         icon.classList.toggle('open');
-        
-        // Remove inline styles after closing to prevent layout interference
         if (!prompts.classList.contains('open')) {
             prompts.removeAttribute('style');
         }
-
-        // Remove the event listener to avoid memory leaks
-        prompts.removeEventListener('transitionend', handleTransitionEnd);
-    }
+    }, 400);
 }
 
         async function fetchGitHubStats() {
