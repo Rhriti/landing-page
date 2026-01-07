@@ -12,6 +12,8 @@
     })(window,document,'script','dataLayer','GTM-PZD7Q3TT');</script>
     <!-- End Google Tag Manager -->
 </script>
+    <link rel="stylesheet" href="https://unpkg.com/@algolia/sitesearch@latest/dist/search.min.css" />
+<script src="https://unpkg.com/@algolia/sitesearch@latest/dist/search.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
@@ -147,6 +149,24 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header class="fixed top-0 left-0 right-0 bg-white z-10 shadow-sm">
+        
+<div id="search"></div>
+<script>
+  SiteSearch.init({
+    container: "#search",
+    applicationId: "SU7GKLF9RA",
+    apiKey: "f3a6d5c8f8186d915cfb4bb1486aa196",
+    indexName: "algolia_movie_sample_dataset",
+    attributes: {
+      primaryText: "title", // the attribute to display in the hits list
+      secondaryText: "overview", // the secondary attribute to display in the hits list
+      tertiaryText: undefined, // the tertiary attribute to display in the hits list
+      url: "", // the URL of the hit
+      image: "poster_path" // the image URL of the hit
+    },
+    darkMode: false,
+  });
+</script>
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <!-- Left Side -->
             <div class="font-sans text-xl tracking-tight font-semibold text-primary hover:opacity-90 transition-opacity duration-200">
